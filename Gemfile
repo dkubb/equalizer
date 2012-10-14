@@ -4,8 +4,6 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'immutable', :git => 'https://github.com/dkubb/immutable.git', :branch => :experimental
-
 gem 'backports', '~> 2.6.1'
 
 group :development do
