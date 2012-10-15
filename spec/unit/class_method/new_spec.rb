@@ -62,6 +62,10 @@ describe Equalizer, '.new' do
 
     describe '#inspect' do
       it { instance.inspect.should eql('#<User>') }
+
+      it 'is a method with zero arity' do
+        instance.method(:inspect).arity.should be(0)
+      end
     end
   end
 
@@ -125,6 +129,10 @@ describe Equalizer, '.new' do
 
     describe '#hash' do
       it { instance.hash.should eql(klass.hash ^ first_name.hash) }
+
+      it 'is a method with zero arity' do
+        instance.method(:hash).arity.should be(0)
+      end
 
       it 'memoizes the hash code' do
         instance.hash.should eql(instance.memoized(:hash))

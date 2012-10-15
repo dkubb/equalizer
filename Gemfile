@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'adamantium', :git => 'https://github.com/mbj/adamantium.git', :branch => :'no-deep-freeze-etc'
 gem 'backports', '~> 2.6.1'
 
 group :development do
