@@ -55,7 +55,7 @@ private
   # @api private
   def define_hash_method
     keys = @keys
-    define_method(:hash) do
+    define_method(:hash) do ||
       keys.map { |key| send(key).hash }.reduce(self.class.hash, :^)
     end
   end
@@ -67,7 +67,7 @@ private
   # @api private
   def define_inspect_method
     keys = @keys
-    define_method(:inspect) do
+    define_method(:inspect) do ||
       klass = self.class
       name  = klass.name || klass.inspect
       "#<#{name}#{keys.map { |key| " #{key}=#{send(key).inspect}" }.join}>"
