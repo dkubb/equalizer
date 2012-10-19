@@ -17,5 +17,4 @@ Gem::Specification.new do |gem|
   gem.extra_rdoc_files = %w[LICENSE README.md TODO]
 
   gem.add_dependency 'ice_nine',   '~> 0.4.0'
-  gem.add_dependency 'adamantium', '~> 0.0.1'
 end

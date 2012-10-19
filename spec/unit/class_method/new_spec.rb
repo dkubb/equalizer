@@ -54,10 +54,6 @@ describe Equalizer, '.new' do
 
     describe '#hash' do
       it { instance.hash.should eql(klass.hash) }
-
-      it 'memoizes the hash code' do
-        instance.hash.should eql(instance.memoized(:hash))
-      end
     end
 
     describe '#inspect' do
@@ -125,10 +121,6 @@ describe Equalizer, '.new' do
 
     describe '#hash' do
       it { instance.hash.should eql(klass.hash ^ first_name.hash) }
-
-      it 'memoizes the hash code' do
-        instance.hash.should eql(instance.memoized(:hash))
-      end
     end
 
     describe '#inspect' do

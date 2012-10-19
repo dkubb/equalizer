@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 require 'ice_nine'
-require 'adamantium'
 
 # Define equality, equivalence and inspection methods
 class Equalizer < Module
@@ -81,8 +80,7 @@ private
   # @api private
   def include_comparison_methods
     module_eval do
-      include Methods, Adamantium
-      memoize :hash
+      include Methods
     end
   end
 
