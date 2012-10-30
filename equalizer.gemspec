@@ -16,5 +16,5 @@ Gem::Specification.new do |gem|
   gem.test_files       = `git ls-files -- {spec}/*`.split("\n")
   gem.extra_rdoc_files = %w[LICENSE README.md TODO]
 
-  gem.add_dependency 'ice_nine',   '~> 0.4.0'
+  gem.add_dependency 'ice_nine',   '~> 0.5.0'
 end
