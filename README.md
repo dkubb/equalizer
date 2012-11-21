@@ -32,7 +32,7 @@ class GeoLocation
   end
 end
 
-point_a = GeoLocation.new(1, 2) 
+point_a = GeoLocation.new(1, 2)
 point_b = GeoLocation.new(1, 2)
 point_c = GeoLocation.new(2, 2)
 
