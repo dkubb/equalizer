@@ -4,6 +4,11 @@ source 'https://rubygems.org'
 
 gemspec
 
+group :yard do
+  gem 'yard',      '~> 0.8.3'
+  gem 'redcarpet', '~> 2.2.2', :platforms => [ :mri, :rbx ]
+end
+
 group :guard do
   gem 'guard',         '~> 1.5.4'
   gem 'guard-bundler', '~> 1.0.0'
