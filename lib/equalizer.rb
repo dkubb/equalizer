@@ -99,7 +99,7 @@ private
     #
     # @api public
     def eql?(other)
-      instance_of?(other.class) and cmp?(__method__, other)
+      instance_of?(other.class) && cmp?(__method__, other)
     end
 
     # Compare the object with other object for equivalency
