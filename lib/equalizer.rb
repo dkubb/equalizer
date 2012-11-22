@@ -10,7 +10,7 @@ class Equalizer < Module
   # Will use the keys with which it is initialized to define #cmp?,
   # #hash, and #inspect
   #
-  # @param [Array<Symbol>] *keys
+  # @param [Array<Symbol>] keys
   #
   # @return [undefined]
   #
