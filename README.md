@@ -10,12 +10,24 @@ Module to define equality, equivalence and inspection methods
 Installation
 ------------
 
-There is no gem release yet so use git source.
+With Rubygems:
 
-In your **Gemfile**
+```bash
+$ gem install equalizer
+$ irb -rubygems
+>> require 'equalizer'
+=> true
+```
 
-``` ruby
-gem 'equalizer', :git => 'https://github.com/dkubb/equalizer'
+With git and local working copy:
+
+```bash
+$ git clone git://github.com/dkubb/equalizer.git
+$ cd equalizer
+$ rake install
+$ irb -rubygems
+>> require 'equalizer'
+=> true
 ```
 
 Examples
