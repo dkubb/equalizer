@@ -4,19 +4,10 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'backports', '~> 2.6.1'
-
-group :development do
-  gem 'rake',  '~> 10.0.2'
-  gem 'rspec', '~> 1.3.2'
-  gem 'yard',  '~> 0.8.1'
-end
-
 group :guard do
   gem 'guard',         '~> 1.5.4'
   gem 'guard-bundler', '~> 1.0.0'
   gem 'guard-rspec',   '~> 1.2.1'
-  gem 'rb-inotify'
 end
 
 group :benchmarks do
@@ -35,6 +26,7 @@ group :metrics do
   gem 'reek',      '~> 1.2.8', :github => 'dkubb/reek'
   gem 'roodi',     '~> 2.1.0'
   gem 'yardstick', '~> 0.8.0'
+  gem 'simplecov'
 
   platforms :ruby_18, :ruby_19 do
     # this indirectly depends on ffi which does not build on ruby-head
