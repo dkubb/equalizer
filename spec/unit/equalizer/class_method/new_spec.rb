@@ -20,6 +20,8 @@ describe Equalizer, '.new' do
 
     it { should be_instance_of(object) }
 
+    it { should be_frozen }
+
     it 'defines #hash and #inspect methods dynamically' do
       subject.public_instance_methods(false).map(&:to_s).should =~ %w[ hash inspect ]
     end
@@ -86,6 +88,8 @@ describe Equalizer, '.new' do
     end
 
     it { should be_instance_of(object) }
+
+    it { should be_frozen }
 
     it 'defines #hash and #inspect methods dynamically' do
       subject.public_instance_methods(false).map(&:to_s).should =~ %w[ hash inspect ]

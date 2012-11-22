@@ -1,9 +1,10 @@
 # encoding: utf-8
 
-require 'ice_nine'
+require 'adamantium'
 
 # Define equality, equivalence and inspection methods
 class Equalizer < Module
+  include Adamantium
 
   # Initialize an Equalizer with the given keys
   #
@@ -16,7 +17,7 @@ class Equalizer < Module
   #
   # @api private
   def initialize(*keys)
-    @keys = IceNine.deep_freeze(keys)
+    @keys = keys
     define_methods
     include_comparison_methods
   end
