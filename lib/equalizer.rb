@@ -80,9 +80,7 @@ private
   #
   # @api private
   def include_comparison_methods
-    module_eval do
-      include Methods
-    end
+    module_eval { include Methods }
   end
 
   # The comparison methods
