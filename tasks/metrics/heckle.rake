@@ -5,8 +5,6 @@ $LOAD_PATH.unshift(File.expand_path('../../../lib', __FILE__))
 
 begin
   require 'pathname'
-  require 'backports'
-  require 'active_support/inflector'
   require 'heckle'
   require 'mspec'
   require 'mspec/utils/name_map'
@@ -19,10 +17,7 @@ begin
       name = if map
         map[constant] || map[:default]
       else
-        method.
-          gsub('?','_ques').
-          gsub('!','_bang').
-          gsub('=','_assign')
+        method.gsub(/[?!=]\z/, '')
       end
       "#{name}_spec.rb"
     end
@@ -34,9 +29,9 @@ begin
       raise "ruby2ruby version #{Ruby2Ruby::VERSION} may not work properly, 1.2.2 *only* is recommended for use with heckle"
     end
 
-    require 'descendants_tracker'
+    require 'equalizer'
 
-    root_module_regexp = Regexp.union('DescendantsTracker')
+    root_module_regexp = Regexp.union('Equalizer')
 
     spec_dir = Pathname('spec/unit')
 
@@ -91,6 +86,8 @@ begin
         spec_class_methods << method
       end
 
+      spec_class_methods -= other_class_methods
+
       # get the instances methods
       spec_methods = mod.public_instance_methods(false)
 
@@ -112,7 +109,6 @@ begin
 
         unless spec_file.file?
           raise "No spec file #{spec_file} for #{mod}.#{method}"
-          next
         end
 
         specs << [ ".#{method}", [ spec_file ] ]
@@ -127,7 +123,6 @@ begin
 
         unless spec_file.file?
           raise "No spec file #{spec_file} for #{mod}##{method}"
-          next
         end
 
         specs << [ "##{method}", [ spec_file ] ]
@@ -202,7 +197,7 @@ begin
     end
   end
 rescue LoadError
-  task :heckle => :spec do
+  task :heckle => :rcov do
     $stderr.puts 'Heckle or mspec is not available. In order to run heckle, you must: gem install heckle mspec'
   end
 end
