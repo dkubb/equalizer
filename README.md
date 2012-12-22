@@ -37,7 +37,7 @@ Examples
 class GeoLocation
   include Equalizer.new(:latitude, :longitude)
 
-  attr_reader :latitidue, :longitude
+  attr_reader :latitude, :longitude
 
   def initialize(latitude, longitude)
     @latitude, @longitude = latitude, longitude
