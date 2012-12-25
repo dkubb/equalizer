@@ -44,7 +44,7 @@ describe Equalizer::Methods, '#==' do
     end
   end
 
-  context 'with an equivalent object of a subclass' do
+  context 'with a subclass instance having equivalent obervable state' do
     let(:other) { Class.new(described_class).new(true) }
 
     it { should be(true) }
@@ -56,7 +56,7 @@ describe Equalizer::Methods, '#==' do
     end
   end
 
-  context 'with an equivalent object of a superclass' do
+  context 'with a superclass instance having equivalent observable state' do
     let(:other) { super_class.new(true) }
 
     it { should be(false) }
