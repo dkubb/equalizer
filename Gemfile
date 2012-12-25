@@ -15,10 +15,6 @@ group :guard do
   gem 'guard-rspec',   '~> 1.2.1'
 end
 
-group :benchmarks do
-  gem 'rbench', '~> 0.2.3'
-end
-
 platform :jruby do
   group :jruby do
     gem 'jruby-openssl', '~> 0.7.4'
