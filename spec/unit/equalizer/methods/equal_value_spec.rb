@@ -49,7 +49,7 @@ describe Equalizer::Methods, '#==' do
     it { should be(true) }
 
     it 'is not symmetric' do
-      # the subclass instance should mainstain substitutability with the object
+      # the subclass instance should maintain substitutability with the object
       # (in the LSP sense) the reverse is not true.
       should_not eql(other == object)
     end
