@@ -5,9 +5,10 @@ require 'spec_helper'
 describe Equalizer::Methods, '#==' do
   subject { object == other }
 
-  let(:object) { described_class.new(true) }
+  let(:object)          { described_class.new(true) }
+  let(:described_class) { Class.new(super_class)    }
 
-  let(:described_class) do
+  let(:super_class) do
     Class.new do
       include Equalizer::Methods
 
@@ -43,13 +44,25 @@ describe Equalizer::Methods, '#==' do
     end
   end
 
-  context 'with an equivalent object of a subclass' do
+  context 'with a subclass instance having equivalent obervable state' do
     let(:other) { Class.new(described_class).new(true) }
 
     it { should be(true) }
 
-    it 'is symmetric' do
-      should eql(other == object)
+    it 'is not symmetric' do
+      # the subclass instance should maintain substitutability with the object
+      # (in the LSP sense) the reverse is not true.
+      should_not eql(other == object)
+    end
+  end
+
+  context 'with a superclass instance having equivalent observable state' do
+    let(:other) { super_class.new(true) }
+
+    it { should be(false) }
+
+    it 'is not symmetric' do
+      should_not eql(other == object)
     end
   end
 
