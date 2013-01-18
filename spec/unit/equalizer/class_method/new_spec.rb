@@ -55,10 +55,18 @@ describe Equalizer, '.new' do
     end
 
     describe '#hash' do
+      it 'has the expected arity' do
+        klass.instance_method(:hash).arity.should be(0)
+      end
+
       it { instance.hash.should eql(klass.hash) }
     end
 
     describe '#inspect' do
+      it 'has the expected arity' do
+        klass.instance_method(:inspect).arity.should be(0)
+      end
+
       it { instance.inspect.should eql('#<User>') }
     end
   end
