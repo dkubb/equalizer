@@ -3,7 +3,7 @@ equalizer
 
 [![Build Status](https://secure.travis-ci.org/dkubb/equalizer.png?branch=master)](http://travis-ci.org/dkubb/equalizer)
 [![Dependency Status](https://gemnasium.com/dkubb/equalizer.png)](https://gemnasium.com/dkubb/equalizer)
-[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/dkubb/equalizer)
+[![Code Climate](https://codeclimate.com/github/dkubb/equalizer.png)](https://codeclimate.com/github/dkubb/equalizer)
 
 Module to define equality, equivalence and inspection methods
 
