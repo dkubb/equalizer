@@ -2,7 +2,7 @@
 
 class Equalizer < Module
 
-  # Released gem version
-  VERSION = '0.0.4'.freeze
+  # Unreleased gem version
+  VERSION = '0.0.5'.freeze
 
 end # class Equalizer
