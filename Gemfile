@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'adamantium', '~> 0.0.7', :git => 'https://github.com/dkubb/adamantium.git'
+
 group :yard do
   gem 'redcarpet', '~> 2.2.2', :platforms => [ :mri, :rbx ]
 end
