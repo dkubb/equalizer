@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'adamantium', '~> 0.0.7', :git => 'https://github.com/dkubb/adamantium.git'
+
 group :yard do
   gem 'redcarpet', '~> 2.2.2', :platforms => [ :mri, :rbx ]
 end
@@ -28,7 +30,7 @@ group :metrics do
   gem 'flay',      '~> 1.4.3'
   gem 'flog',      '~> 2.5.3'
   gem 'roodi',     '~> 2.2.0'
-  gem 'yardstick', '~> 0.9.2'
+  gem 'yardstick', '~> 0.9.3', :git => 'https://github.com/dkubb/yardstick.git'
 
   platforms :ruby_18, :ruby_19 do
     # this indirectly depends on ffi which does not build on ruby-head
