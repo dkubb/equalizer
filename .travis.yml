@@ -1,19 +1,31 @@
 language: ruby
 before_install: gem install bundler
-bundler_args: --without yard guard metrics
-script: "bundle exec rake spec"
+bundler_args: --without yard guard benchmarks
+script: "bundle exec rake ci"
 rvm:
+  - ree
   - 1.8.7
   - 1.9.2
   - 1.9.3
-  - jruby-18mode
-  - jruby-19mode
+  - 2.0.0
+  - ruby-head
   - rbx-18mode
   - rbx-19mode
-  - ree
-  - ruby-head
-  - jruby-head
+  - jruby-18mode
 notifications:
+  irc:
+    channels:
+      - irc.freenode.org#datamapper
+    on_success: never
+    on_failure: change
   email:
-    - dan.kubb@gmail.com
-    - mbj@seonic.net
+    recipients:
+      - dan.kubb@gmail.com
+    on_success: never
+    on_failure: change
+matrix:
+  include:
+    - rvm: jruby-19mode
+      env: JRUBY_OPTS="$JRUBY_OPTS --debug"
+    - rvm: jruby-head
+      env: JRUBY_OPTS="$JRUBY_OPTS --debug"
