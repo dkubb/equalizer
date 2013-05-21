@@ -1,9 +1,16 @@
-# encoding: utf-8
+require 'devtools'
+Devtools.init_rake_tasks
 
-require 'rake'
+class Rake::Task
+  def overwrite(&block)
+    @actions.clear
+    enhance(&block)
+  end
+end
 
-require File.expand_path('../lib/equalizer/version', __FILE__)
+Rake.application.load_imports
 
-FileList['tasks/**/*.rake'].each { |task| import task }
-
-task :default => :spec
+Rake::Task['metrics:mutant'].overwrite do
+  $stderr.puts 'Mutant is disabled, as it directly uses equalizer to kill mutations'
+  $stderr.puts 'This issue will be addressed with mutants "Zombie" runtime-namespace-vendoring'
+end

@@ -1,11 +1,11 @@
 # encoding: utf-8
 
 require 'equalizer'
-require 'spec'
-require 'spec/autorun'
+require 'ice_nine'
 
-# require spec support files and shared behavior
-Dir[File.expand_path('../{support,shared}/**/*.rb', __FILE__)].each { |f| require f }
+# TODO: FIXME!
+# Cache correct freezer in ice_nine before
+# rspec2 infects the world...
+Equalizer.new
 
-Spec::Runner.configure do |config|
-end
+require 'devtools/spec_helper'
