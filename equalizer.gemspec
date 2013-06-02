@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.name        = 'equalizer'
   gem.version     = Equalizer::VERSION.dup
   gem.authors     = ['Dan Kubb', 'Markus Schirp']
-  gem.email       = %w[dan.kubb@gmail.com mbj@seonic.net]
+  gem.email       = %w[dan.kubb@gmail.com mbj@schirp-dso.com]
   gem.description = 'Module to define equality, equivalence and inspection methods'
   gem.summary     = gem.description
   gem.homepage    = 'https://github.com/dkubb/equalizer'
