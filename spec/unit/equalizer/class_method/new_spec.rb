@@ -75,16 +75,17 @@ describe Equalizer, '.new' do
   context 'with keys' do
     subject { object.new(*keys) }
 
-    let(:keys)       { [ :first_name ].freeze }
-    let(:first_name) { 'John'                 }
-    let(:instance)   { klass.new(first_name)  }
+    let(:keys)       { [ :firstname, :lastname ].freeze }
+    let(:firstname)  { 'John'                           }
+    let(:lastname)   { 'Doe'                            }
+    let(:instance)   { klass.new(firstname, lastname)   }
 
     let(:klass) do
       ::Class.new do
-        attr_reader :first_name
+        attr_reader :firstname, :lastname
 
-        def initialize(first_name)
-          @first_name = first_name
+        def initialize(firstname, lastname)
+          @firstname, @lastname = firstname, lastname
         end
       end
     end
@@ -125,7 +126,13 @@ describe Equalizer, '.new' do
         it { (instance == other).should be(true) }
       end
 
-      context 'when the objects are different' do
+      context 'when the objects are different type' do
+        let(:other) { klass.new('Foo', 'Bar') }
+
+        it { (instance == other).should be(false) }
+      end
+
+      context 'when the objects are from different type' do
         let(:other) { stub('other') }
 
         it { (instance == other).should be(false) }
@@ -133,11 +140,11 @@ describe Equalizer, '.new' do
     end
 
     describe '#hash' do
-      it { instance.hash.should eql(klass.hash ^ first_name.hash) }
+      it { instance.hash.should eql(klass.hash ^ firstname.hash ^ lastname.hash) }
     end
 
     describe '#inspect' do
-      it { instance.inspect.should eql('#<User first_name="John">') }
+      it { instance.inspect.should eql('#<User firstname="John" lastname="Doe">') }
     end
   end
 end
