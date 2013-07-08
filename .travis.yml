@@ -6,7 +6,6 @@ rvm:
   - 1.9.2
   - 1.9.3
   - 2.0.0
-  - ruby-head
   - rbx-19mode
 notifications:
   irc:
@@ -20,6 +19,8 @@ notifications:
     on_success: never
     on_failure: change
 matrix:
+  allowed_failures:
+    - rvm: ruby-head
   include:
     - rvm: jruby-19mode
       env: JRUBY_OPTS="$JRUBY_OPTS --debug"
