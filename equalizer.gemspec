@@ -16,7 +16,6 @@ Gem::Specification.new do |gem|
   gem.test_files       = `git ls-files -- spec/unit`.split($/)
   gem.extra_rdoc_files = %w[LICENSE README.md TODO]
 
-  gem.add_runtime_dependency('backports',  '~> 3.2', '>= 3.2.0')
   gem.add_runtime_dependency('adamantium', '~> 0.0.7')
 
   gem.add_development_dependency('rake',  '~> 10.0.4')
