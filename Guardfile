@@ -6,7 +6,7 @@ guard :bundler do
   watch(%w{.+.gemspec\z})
 end
 
-guard :rspec, cli: File.read('.rspec').split.push('--fail-fast').join(' '), keep_failed: false do
+guard :rspec, cli: File.read('.rspec').split.join(' '), keep_failed: false do
   # Run all specs if configuration is modified
   watch('.rspec')              { 'spec' }
   watch('Guardfile')           { 'spec' }
