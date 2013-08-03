@@ -10,11 +10,12 @@ Gem::Specification.new do |gem|
   gem.description = 'Module to define equality, equivalence and inspection methods'
   gem.summary     = gem.description
   gem.homepage    = 'https://github.com/dkubb/equalizer'
+  gem.licenses    = 'MIT'
 
   gem.require_paths    = %w[lib]
-  gem.files            = `git ls-files`.split($/)
-  gem.test_files       = `git ls-files -- spec/unit`.split($/)
-  gem.extra_rdoc_files = %w[LICENSE README.md TODO]
+  gem.files            = `git ls-files`.split("\n")
+  gem.test_files       = `git ls-files -- spec/{unit,integration}`.split("\n")
+  gem.extra_rdoc_files = %w[LICENSE README.md CONTRIBUTING.md TODO]
 
   gem.add_runtime_dependency('adamantium', '~> 0.0.11')
 
