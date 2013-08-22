@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files       = `git ls-files -- spec/{unit,integration}`.split("\n")
   gem.extra_rdoc_files = %w[LICENSE README.md CONTRIBUTING.md TODO]
 
-  gem.add_runtime_dependency('adamantium', '~> 0.0.11')
+  gem.add_dependency('adamantium', '~> 0.1')
 
   gem.add_development_dependency('bundler', '~> 1.3', '>= 1.3.5')
 end
