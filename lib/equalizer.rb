@@ -1,10 +1,7 @@
 # encoding: utf-8
 
-require 'adamantium'
-
 # Define equality, equivalence and inspection methods
 class Equalizer < Module
-  include Adamantium
 
   # Initialize an Equalizer with the given keys
   #
@@ -20,6 +17,7 @@ class Equalizer < Module
     @keys = keys
     define_methods
     include_comparison_methods
+    freeze
   end
 
 private
