@@ -84,6 +84,7 @@ describe Equalizer, '.new' do
     let(:klass) do
       ::Class.new do
         attr_reader :firstname, :lastname
+        private :firstname, :lastname
 
         def initialize(firstname, lastname)
           @firstname, @lastname = firstname, lastname
