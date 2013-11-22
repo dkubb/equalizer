@@ -16,11 +16,22 @@ class Equalizer < Module
   def initialize(*keys)
     @keys = keys
     define_methods
-    include_comparison_methods
     freeze
   end
 
 private
+
+  # Hook called when module is included
+  #
+  # @param [Module] descendant
+  #   the module or class including Equalizer
+  #
+  # @return [self]
+  #
+  # @api private
+  def included(descendant)
+    descendant.module_eval { include Methods }
+  end
 
   # Define the equalizer methods based on #keys
   #
@@ -70,15 +81,6 @@ private
       name  = klass.name || klass.inspect
       "#<#{name}#{keys.map { |key| " #{key}=#{send(key).inspect}" }.join}>"
     end
-  end
-
-  # Include the #eql? and #== methods
-  #
-  # @return [undefined]
-  #
-  # @api private
-  def include_comparison_methods
-    module_eval { include Methods }
   end
 
   # The comparison methods
