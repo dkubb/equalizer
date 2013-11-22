@@ -95,4 +95,14 @@ describe Equalizer::Methods, '#==' do
       should_not eql(other == object)
     end
   end
+
+  context 'with a different object' do
+    let(:other) { described_class.new(false) }
+
+    it { should be(false) }
+
+    it 'is symmetric' do
+      should eql(other == object)
+    end
+  end
 end
