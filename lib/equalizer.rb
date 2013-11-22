@@ -52,7 +52,7 @@ private
   def define_cmp_method
     keys = @keys
     define_method(:cmp?) do |comparator, other|
-      keys.all? { |key| send(key).send(comparator, other.send(key)) }
+      keys.all? { |key| send(key).public_send(comparator, other.send(key)) }
     end
     private :cmp?
   end
