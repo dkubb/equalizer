@@ -30,6 +30,7 @@ private
   #
   # @api private
   def included(descendant)
+    super
     descendant.module_eval { include Methods }
   end
 
