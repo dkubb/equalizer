@@ -20,7 +20,6 @@ if ENV['COVERAGE'] == 'true'
   end
 end
 
-require 'devtools/spec_helper'
 require 'equalizer'
 
 # TODO: FIXME!
