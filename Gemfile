@@ -8,6 +8,7 @@ group :test do
   gem 'backports'
   gem 'coveralls', :require => false
   gem 'rspec',     '~> 2.14'
+  gem 'rubocop',   :platforms => [:ruby_19, :ruby_20]
   gem 'simplecov', :require => false
   gem 'yardstick'
 end
