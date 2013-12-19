@@ -61,7 +61,7 @@ describe Equalizer, '.new' do
         expect(klass.instance_method(:hash).arity).to be(0)
       end
 
-      it { expect(instance.hash).to eql(klass.hash) }
+      it { expect(instance.hash).to eql([klass].hash) }
     end
 
     describe '#inspect' do
@@ -145,7 +145,7 @@ describe Equalizer, '.new' do
     describe '#hash' do
       it 'returns the expected hash' do
         expect(instance.hash).
-          to eql(klass.hash ^ firstname.hash ^ lastname.hash)
+          to eql([firstname, lastname, klass].hash)
       end
     end
 
