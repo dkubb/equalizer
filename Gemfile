@@ -7,6 +7,7 @@ gem 'rake'
 group :test do
   gem 'backports'
   gem 'coveralls', :require => false
+  gem 'json',      :platforms => [:ruby_19]
   gem 'reek'
   gem 'rspec',     '~> 2.14'
   gem 'rubocop',   :platforms => [:ruby_19, :ruby_20]
