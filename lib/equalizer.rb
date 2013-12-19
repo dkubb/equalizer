@@ -66,7 +66,7 @@ private
   def define_hash_method
     keys = @keys
     define_method(:hash) do ||
-      keys.map { |key| send(key) }.push(self.class).hash
+      keys.map(&method(:send)).push(self.class).hash
     end
   end
 
