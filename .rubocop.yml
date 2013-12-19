@@ -2,7 +2,7 @@ AllCops:
   Includes:
     - '**/*.rake'
     - 'Gemfile'
-    - 'Gemfile.devtools'
+    - 'Rakefile'
   Excludes:
     - '**/vendor/**'
 
@@ -58,4 +58,12 @@ TrivialAccessors:
 
 # Allow empty lines around body
 EmptyLinesAroundBody:
+  Enabled: false
+
+# Enforce Ruby 1.8-compatible hash syntax
+HashSyntax:
+  EnforcedStyle: hash_rockets
+
+# Allow dots at the end of lines
+DotPosition:
   Enabled: false

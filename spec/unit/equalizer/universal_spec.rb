@@ -24,8 +24,8 @@ describe Equalizer, '.new' do
     it { should be_frozen }
 
     it 'defines #hash and #inspect methods dynamically' do
-      expect(subject.public_instance_methods(false).map(&:to_s).sort)
-        .to eql(%w[hash inspect])
+      expect(subject.public_instance_methods(false).map(&:to_s).sort).
+        to eql(%w[hash inspect])
     end
 
     describe '#eql?' do
@@ -104,8 +104,8 @@ describe Equalizer, '.new' do
     it { should be_frozen }
 
     it 'defines #hash and #inspect methods dynamically' do
-      expect(subject.public_instance_methods(false).map(&:to_s).sort)
-        .to eql(%w[ hash inspect ])
+      expect(subject.public_instance_methods(false).map(&:to_s).sort).
+        to eql(%w[ hash inspect ])
     end
 
     describe '#eql?' do
@@ -144,15 +144,15 @@ describe Equalizer, '.new' do
 
     describe '#hash' do
       it 'returns the expected hash' do
-        expect(instance.hash)
-          .to eql(klass.hash ^ firstname.hash ^ lastname.hash)
+        expect(instance.hash).
+          to eql(klass.hash ^ firstname.hash ^ lastname.hash)
       end
     end
 
     describe '#inspect' do
       it 'returns the expected string' do
-        expect(instance.inspect)
-          .to eql('#<User firstname="John" lastname="Doe">')
+        expect(instance.inspect).
+          to eql('#<User firstname="John" lastname="Doe">')
       end
     end
   end
