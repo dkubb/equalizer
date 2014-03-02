@@ -3,11 +3,11 @@ equalizer
 
 Module to define equality, equivalence and inspection methods
 
-[![Gem Version](https://badge.fury.io/rb/equalizer.png)][gem]
-[![Build Status](https://secure.travis-ci.org/dkubb/equalizer.png?branch=master)][travis]
-[![Dependency Status](https://gemnasium.com/dkubb/equalizer.png)][gemnasium]
-[![Code Climate](https://codeclimate.com/github/dkubb/equalizer.png)][codeclimate]
-[![Coverage Status](https://coveralls.io/repos/dkubb/equalizer/badge.png?branch=master)][coveralls]
+[![Gem Version](http://img.shields.io/gem/v/equalizer.svg)][gem]
+[![Build Status](http://img.shields.io/travis/dkubb/equalizer.svg)][travis]
+[![Dependency Status](http://img.shields.io/gemnasium/dkubb/equalizer.svg)][gemnasium]
+[![Code Climate](http://img.shields.io/codeclimate/github/dkubb/equalizer.svg)][codeclimate]
+[![Coverage Status](http://img.shields.io/coveralls/dkubb/equalizer.svg)][coveralls]
 
 [gem]: https://rubygems.org/gems/equalizer
 [travis]: https://travis-ci.org/dkubb/equalizer
