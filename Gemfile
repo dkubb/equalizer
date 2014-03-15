@@ -9,7 +9,7 @@ group :test do
   gem 'coveralls', :require => false
   gem 'json',      :platforms => [:ruby_19]
   gem 'rspec',     '~> 2.14'
-  gem 'rubocop',   :platforms => [:ruby_19, :ruby_20, :ruby_21]
+  gem 'rubocop',   '>= 0.19', :platforms => [:ruby_19, :ruby_20, :ruby_21]
   gem 'simplecov', :require => false
   gem 'yardstick'
 end

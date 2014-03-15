@@ -6,7 +6,7 @@ AllCops:
   Excludes:
     - 'vendor/**'
 
-# Avoid parameter lists longer than five parameters.
+# Avoid long parameter lists
 ParameterLists:
   Max: 3
   CountKeywordArgs: true
@@ -67,3 +67,18 @@ HashSyntax:
 # Allow dots at the end of lines
 DotPosition:
   Enabled: false
+
+DoubleNegation:
+  Enabled: false
+
+PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%':  ()
+    '%i': ()
+    '%q': ()
+    '%Q': ()
+    '%r': '{}'
+    '%s': ()
+    '%w': '[]'
+    '%W': '[]'
+    '%x': ()

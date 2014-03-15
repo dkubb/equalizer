@@ -105,7 +105,7 @@ describe Equalizer, '.new' do
 
     it 'defines #hash and #inspect methods dynamically' do
       expect(subject.public_instance_methods(false).map(&:to_s).sort).
-        to eql(%w[ hash inspect ])
+        to eql(%w[hash inspect])
     end
 
     describe '#eql?' do
