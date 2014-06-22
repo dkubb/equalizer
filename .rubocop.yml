@@ -1,9 +1,9 @@
 AllCops:
-  Includes:
+  Include:
     - '**/*.rake'
     - 'Gemfile'
     - 'Rakefile'
-  Excludes:
+  Exclude:
     - 'vendor/**'
 
 # Avoid long parameter lists
