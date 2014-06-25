@@ -33,5 +33,7 @@ measurements
 ## BUNDLER
 .bundle
 Gemfile.lock
+bin
+bundle
 
 ## PROJECT::SPECIFIC
