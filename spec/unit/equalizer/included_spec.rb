@@ -29,7 +29,17 @@ describe Equalizer, '#included' do
     # superclass#included method is called. All of the built-in rspec helpers
     # did not seem to work for this.
     included = false
-    superclass.class_eval { define_method(:included) { |_| included = true } }
+
+    superclass.class_eval do
+      define_method(:included) do |_|
+        # Only set the flag when an Equalizer instance is included.
+        # Otherwise, other module includes (which get triggered internally
+        # in RSpec when `change` is used for the first time, since it uses
+        # autoloading for its matchers) will wrongly set this flag.
+        included = true if self.is_a?(Equalizer)
+      end
+    end
+
     expect { subject }.to change { included }.from(false).to(true)
   end
 
