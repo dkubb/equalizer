@@ -22,11 +22,6 @@ end
 
 require 'equalizer'
 
-# TODO: FIXME!
-# Cache correct freezer in ice_nine before
-# rspec2 infects the world...
-Equalizer.new
-
 RSpec.configure do |config|
   config.expect_with :rspec do |expect_with|
     expect_with.syntax = :expect
