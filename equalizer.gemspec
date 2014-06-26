@@ -12,6 +12,8 @@ Gem::Specification.new do |gem|
   gem.homepage    = 'https://github.com/dkubb/equalizer'
   gem.licenses    = 'MIT'
 
+  gem.required_ruby_version = '>= 1.8.7'
+
   gem.require_paths    = %w[lib]
   gem.files            = `git ls-files`.split("\n")
   gem.test_files       = `git ls-files -- spec/{unit,integration}`.split("\n")
