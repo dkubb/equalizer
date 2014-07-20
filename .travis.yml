@@ -1,24 +1,23 @@
-language: ruby
-cache: bundler
 bundler_args: --without yard guard benchmarks
+cache: bundler
+env:
+  global:
+    - JRUBY_OPTS="$JRUBY_OPTS --debug" # for simplecov
+language: ruby
 script: "bundle exec rake ci"
 rvm:
-  - ree
   - 1.8.7
   - 1.9.2
   - 1.9.3
   - 2.0.0
-  - 2.1.0
-  - ruby-head
+  - 2.1
+  - jruby-18mode
+  - jruby-19mode
+  - jruby-head
   - rbx-2
+  - ree
+  - ruby-head
 matrix:
-  include:
-    - rvm: jruby-18mode
-      env: JRUBY_OPTS="$JRUBY_OPTS --debug"  # for simplecov
-    - rvm: jruby-19mode
-      env: JRUBY_OPTS="$JRUBY_OPTS --debug"  # for simplecov
-    - rvm: jruby-head
-      env: JRUBY_OPTS="$JRUBY_OPTS --debug"  # for simplecov
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby-head
