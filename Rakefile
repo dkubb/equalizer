@@ -12,7 +12,7 @@ task :default => :spec
 begin
   require 'rubocop/rake_task'
   RuboCop::RakeTask.new do |task|
-    task.options = %w[--config config/rubocop.yml]
+    task.options = %w(--config config/rubocop.yml)
   end
 rescue LoadError
   desc 'Run RuboCop'

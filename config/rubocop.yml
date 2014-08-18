@@ -1,78 +1,54 @@
-inherit_from: ../.rubocop.yml
+Metrics/BlockNesting:
+  Max: 2
 
-# Avoid long parameter lists
-ParameterLists:
-  Max: 3
+Metrics/LineLength:
+  AllowURI: true
+  Enabled: false
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 15
+
+Metrics/ParameterLists:
+  Max: 4
   CountKeywordArgs: true
 
-# Avoid more than `Max` levels of nesting.
-BlockNesting:
-  Max: 3
+Style/AccessModifierIndentation:
+  EnforcedStyle: outdent
 
-# Align with the style guide.
-CollectionMethods:
+Style/CollectionMethods:
   PreferredMethods:
-    collect:  'map'
-    inject:   'reduce'
+    map:      'collect'
+    reduce:   'inject'
     find:     'detect'
     find_all: 'select'
 
-# Do not force public/protected/private keyword to be indented at the same
-# level as the def keyword. My personal preference is to outdent these keywords
-# because I think when scanning code it makes it easier to identify the
-# sections of code and visually separate them. When the keyword is at the same
-# level I think it sort of blends in with the def keywords and makes it harder
-# to scan the code and see where the sections are.
-AccessModifierIndentation:
+Style/Documentation:
   Enabled: false
 
-# Disable documentation checking until a class needs to be documented once
-Documentation:
+Style/DotPosition:
+  EnforcedStyle: trailing
+
+Style/DoubleNegation:
   Enabled: false
 
-# Do not always use &&/|| instead of and/or.
-AndOr:
+Style/EachWithObject:
   Enabled: false
 
-# Do not favor modifier if/unless usage when you have a single-line body
-IfUnlessModifier:
+Style/Encoding:
   Enabled: false
 
-# Allow case equality operator (in limited use within the specs)
-CaseEquality:
-  Enabled: false
-
-# Constants do not always have to use SCREAMING_SNAKE_CASE
-ConstantName:
-  Enabled: false
-
-# Not all trivial readers/writers can be defined with attr_* methods
-TrivialAccessors:
-  Enabled: false
-
-# Allow empty lines around body
-EmptyLinesAroundBody:
-  Enabled: false
-
-# Enforce Ruby 1.8-compatible hash syntax
-HashSyntax:
+Style/HashSyntax:
   EnforcedStyle: hash_rockets
 
-# Allow dots at the end of lines
-DotPosition:
+Style/Lambda:
   Enabled: false
 
-DoubleNegation:
-  Enabled: false
+Style/RaiseArgs:
+  EnforcedStyle: compact
 
-PercentLiteralDelimiters:
-  PreferredDelimiters:
-    '%':  ()
-    '%i': ()
-    '%q': ()
-    '%Q': ()
-    '%r': '{}'
-    '%s': ()
-    '%w': '[]'
-    '%W': '[]'
-    '%x': ()
+Style/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+Style/TrailingComma:
+  EnforcedStyleForMultiline: 'comma'

@@ -2,7 +2,6 @@
 
 # Define equality, equivalence and inspection methods
 class Equalizer < Module
-
   # Initialize an Equalizer with the given keys
   #
   # Will use the keys with which it is initialized to define #cmp?,
@@ -66,7 +65,7 @@ private
   def define_hash_method
     keys = @keys
     define_method(:hash) do | |
-      keys.map(&method(:send)).push(self.class).hash
+      keys.collect(&method(:send)).push(self.class).hash
     end
   end
 
@@ -80,13 +79,12 @@ private
     define_method(:inspect) do | |
       klass = self.class
       name  = klass.name || klass.inspect
-      "#<#{name}#{keys.map { |key| " #{key}=#{send(key).inspect}" }.join}>"
+      "#<#{name}#{keys.collect { |key| " #{key}=#{send(key).inspect}" }.join}>"
     end
   end
 
   # The comparison methods
   module Methods
-
     # Compare the object with other object for equality
     #
     # @example
@@ -117,6 +115,5 @@ private
       other = coerce(other) if respond_to?(:coerce, true)
       other.is_a?(self.class) && cmp?(__method__, other)
     end
-
   end # module Methods
 end # class Equalizer
