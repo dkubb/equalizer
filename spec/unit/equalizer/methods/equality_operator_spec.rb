@@ -83,7 +83,7 @@ describe Equalizer::Methods, '#==' do
       # declare a private #coerce method
       described_class.class_eval do
         def coerce(other)
-          self.class.new(!!other)
+          [self.class.new(!!other), self]
         end
         private :coerce
       end
