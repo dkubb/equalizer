@@ -7,12 +7,12 @@ gem 'rake'
 group :test do
   gem 'backports'
   gem 'coveralls'
-  gem 'json',       :platforms => [:ruby_19]
-  gem 'mime-types', '~> 1.25', :platforms => [:jruby, :ruby_18]
+  gem 'json',                    :platforms => [:ruby_19]
+  gem 'mime-types',  '~> 1.25',  :platforms => [:jruby, :ruby_18]
   gem 'rest-client', '~> 1.6.0', :platforms => [:jruby, :ruby_18]
-  gem 'rspec',      '~> 3.0'
-  gem 'rubocop',    '>= 0.25', :platforms => [:ruby_19, :ruby_20, :ruby_21]
-  gem 'simplecov',  '>= 0.9'
+  gem 'rspec',       '~> 3.0'
+  gem 'rubocop',     '>= 0.25',  :platforms => [:ruby_19, :ruby_20, :ruby_21, :ruby_22]
+  gem 'simplecov',   '>= 0.9'
   gem 'yardstick'
 end
 

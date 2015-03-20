@@ -55,7 +55,8 @@ implementations:
 * Ruby 1.8.7
 * Ruby 1.9.3
 * Ruby 2.0.0
-* Ruby 2.1.0
+* Ruby 2.1
+* Ruby 2.2
 * [JRuby][]
 * [Rubinius][]
 * [Ruby Enterprise Edition][ree]

@@ -1,5 +1,6 @@
-bundler_args: --without yard guard benchmarks
+before_install: gem update bundler
 cache: bundler
+sudo: false
 env:
   global:
     - JRUBY_OPTS="$JRUBY_OPTS --debug" # for simplecov
@@ -10,6 +11,7 @@ rvm:
   - 1.9.3
   - 2.0.0
   - 2.1
+  - 2.2
   - jruby-18mode
   - jruby-19mode
   - jruby-head
