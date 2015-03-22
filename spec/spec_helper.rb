@@ -4,7 +4,10 @@ if ENV['COVERAGE'] == 'true'
   require 'simplecov'
   require 'coveralls'
 
-  SimpleCov.formatters = [SimpleCov::Formatter::HTMLFormatter, Coveralls::SimpleCov::Formatter]
+  SimpleCov.formatters = [
+    SimpleCov::Formatter::HTMLFormatter,
+    Coveralls::SimpleCov::Formatter
+  ]
 
   SimpleCov.start do
     command_name 'spec:unit'
