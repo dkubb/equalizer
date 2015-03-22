@@ -11,7 +11,7 @@ describe Equalizer, '#included' do
 
   before do
     # Prevent Module.included from being called through inheritance
-    described_class::Methods.stub(:included)
+    allow(described_class::Methods).to receive(:included)
   end
 
   around do |example|
