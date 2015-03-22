@@ -52,7 +52,9 @@ private
   def define_cmp_method
     keys = @keys
     define_method(:cmp?) do |comparator, other|
-      keys.all? { |key| send(key).send(comparator, other.send(key)) }
+      keys.all? do |key|
+        __send__(key).public_send(comparator, other.__send__(key))
+      end
     end
     private :cmp?
   end
@@ -79,7 +81,7 @@ private
     define_method(:inspect) do | |
       klass = self.class
       name  = klass.name || klass.inspect
-      "#<#{name}#{keys.map { |key| " #{key}=#{send(key).inspect}" }.join}>"
+      "#<#{name}#{keys.map { |key| " #{key}=#{__send__(key).inspect}" }.join}>"
     end
   end
 

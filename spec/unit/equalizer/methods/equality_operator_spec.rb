@@ -83,7 +83,7 @@ describe Equalizer::Methods, '#==' do
       # declare a private #coerce method
       described_class.class_eval do
         def coerce(other)
-          [self.class.new(!other.nil? || other != false), self]
+          [self.class.new(![nil, false].include?(other)), self]
         end
         private :coerce
       end
@@ -93,6 +93,26 @@ describe Equalizer::Methods, '#==' do
 
     it 'is not symmetric' do
       should_not eql(other == object)
+    end
+  end
+
+  context 'with a different object after coercion' do
+    let(:other) { nil }
+
+    before do
+      # declare a private #coerce method
+      described_class.class_eval do
+        def coerce(other)
+          [self.class.new(![nil, false].include?(other)), self]
+        end
+        private :coerce
+      end
+    end
+
+    it { should be(false) }
+
+    it 'is symmetric' do
+      should eql(other == object)
     end
   end
 
