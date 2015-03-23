@@ -52,7 +52,9 @@ private
   def define_cmp_method
     keys = @keys
     define_method(:cmp?) do |comparator, other|
-      keys.all? { |key| send(key).send(comparator, other.send(key)) }
+      keys.all? do |key|
+        __send__(key).public_send(comparator, other.__send__(key))
+      end
     end
     private :cmp?
   end
@@ -65,7 +67,7 @@ private
   def define_hash_method
     keys = @keys
     define_method(:hash) do | |
-      keys.collect(&method(:send)).push(self.class).hash
+      keys.map(&method(:send)).push(self.class).hash
     end
   end
 
@@ -79,7 +81,7 @@ private
     define_method(:inspect) do | |
       klass = self.class
       name  = klass.name || klass.inspect
-      "#<#{name}#{keys.collect { |key| " #{key}=#{send(key).inspect}" }.join}>"
+      "#<#{name}#{keys.map { |key| " #{key}=#{__send__(key).inspect}" }.join}>"
     end
   end
 
@@ -113,7 +115,7 @@ private
     # @api public
     def ==(other)
       other = coerce(other).first if respond_to?(:coerce, true)
-      other.is_a?(self.class) && cmp?(__method__, other)
+      other.kind_of?(self.class) && cmp?(__method__, other)
     end
   end # module Methods
 end # class Equalizer

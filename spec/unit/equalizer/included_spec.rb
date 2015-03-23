@@ -11,7 +11,7 @@ describe Equalizer, '#included' do
 
   before do
     # Prevent Module.included from being called through inheritance
-    described_class::Methods.stub(:included)
+    allow(described_class::Methods).to receive(:included)
   end
 
   around do |example|
@@ -36,7 +36,7 @@ describe Equalizer, '#included' do
         # Otherwise, other module includes (which get triggered internally
         # in RSpec when `change` is used for the first time, since it uses
         # autoloading for its matchers) will wrongly set this flag.
-        included = true if self.is_a?(Equalizer)
+        included = true if self.kind_of?(Equalizer)
       end
     end
 

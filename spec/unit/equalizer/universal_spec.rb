@@ -12,7 +12,7 @@ describe Equalizer, '.new' do
 
     before do
       # specify the class #name method
-      klass.stub(:name).and_return(name)
+      allow(klass).to receive(:name).and_return(name)
       klass.send(:include, subject)
     end
 
@@ -23,8 +23,8 @@ describe Equalizer, '.new' do
     it { should be_frozen }
 
     it 'defines #hash and #inspect methods dynamically' do
-      expect(subject.public_instance_methods(false).collect(&:to_s).sort).
-        to eql(%w(hash inspect))
+      expect(subject.public_instance_methods(false).map(&:to_s).sort)
+        .to eql(%w[hash inspect])
     end
 
     describe '#eql?' do
@@ -75,7 +75,7 @@ describe Equalizer, '.new' do
   context 'with keys' do
     subject { object.new(*keys) }
 
-    let(:keys)       { [:firstname, :lastname].freeze }
+    let(:keys)       { %i[firstname lastname].freeze  }
     let(:firstname)  { 'John'                         }
     let(:lastname)   { 'Doe'                          }
     let(:instance)   { klass.new(firstname, lastname) }
@@ -93,8 +93,7 @@ describe Equalizer, '.new' do
 
     before do
       # specify the class #inspect method
-      klass.stub(:name).and_return(nil)
-      klass.stub(:inspect).and_return(name)
+      allow(klass).to receive_messages(name: nil, inspect: name)
       klass.send(:include, subject)
     end
 
@@ -103,8 +102,8 @@ describe Equalizer, '.new' do
     it { should be_frozen }
 
     it 'defines #hash and #inspect methods dynamically' do
-      expect(subject.public_instance_methods(false).collect(&:to_s).sort).
-        to eql(%w(hash inspect))
+      expect(subject.public_instance_methods(false).map(&:to_s).sort)
+        .to eql(%w[hash inspect])
     end
 
     describe '#eql?' do
@@ -143,15 +142,15 @@ describe Equalizer, '.new' do
 
     describe '#hash' do
       it 'returns the expected hash' do
-        expect(instance.hash).
-          to eql([firstname, lastname, klass].hash)
+        expect(instance.hash)
+          .to eql([firstname, lastname, klass].hash)
       end
     end
 
     describe '#inspect' do
       it 'returns the expected string' do
-        expect(instance.inspect).
-          to eql('#<User firstname="John" lastname="Doe">')
+        expect(instance.inspect)
+          .to eql('#<User firstname="John" lastname="Doe">')
       end
     end
   end
