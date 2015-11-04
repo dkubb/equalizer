@@ -86,7 +86,8 @@ describe Equalizer, '.new' do
         private :firstname, :lastname
 
         def initialize(firstname, lastname)
-          @firstname, @lastname = firstname, lastname
+          @firstname = firstname
+          @lastname = lastname
         end
       end
     end
