@@ -30,7 +30,7 @@ private
   # @api private
   def included(descendant)
     super
-    descendant.module_eval { include Methods }
+    descendant.include Methods
   end
 
   # Define the equalizer methods based on #keys
