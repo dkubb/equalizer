@@ -10,11 +10,13 @@ rvm:
   - rbx-2
 matrix:
   include:
-    - rvm: jruby
+    - rvm: jruby-9000
       env: JRUBY_OPTS="$JRUBY_OPTS --debug --2.0"  # for simplecov
     - rvm: jruby-head
       env: JRUBY_OPTS="$JRUBY_OPTS --debug --2.0"  # for simplecov
   allow_failures:
-    - rvm: ruby-head
+    - rvm: jruby-9000
     - rvm: jruby-head
+    - rvm: rbx-2
+    - rvm: ruby-head
   fast_finish: true

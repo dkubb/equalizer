@@ -52,11 +52,6 @@ implementations:
 
 * Ruby 2.1
 * Ruby 2.2
-* [JRuby][]
-* [Rubinius][]
-
-[jruby]: http://jruby.org/
-[rubinius]: http://rubini.us/
 
 If something doesn't work on one of these versions, it's a bug.
 
