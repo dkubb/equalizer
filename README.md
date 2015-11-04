@@ -7,13 +7,11 @@ Module to define equality, equivalence and inspection methods
 [![Build Status](http://img.shields.io/travis/dkubb/equalizer.svg)][travis]
 [![Dependency Status](http://img.shields.io/gemnasium/dkubb/equalizer.svg)][gemnasium]
 [![Code Climate](http://img.shields.io/codeclimate/github/dkubb/equalizer.svg)][codeclimate]
-[![Coverage Status](http://img.shields.io/coveralls/dkubb/equalizer.svg)][coveralls]
 
 [gem]: https://rubygems.org/gems/equalizer
 [travis]: https://travis-ci.org/dkubb/equalizer
 [gemnasium]: https://gemnasium.com/dkubb/equalizer
 [codeclimate]: https://codeclimate.com/github/dkubb/equalizer
-[coveralls]: https://coveralls.io/r/dkubb/equalizer
 
 Examples
 --------
