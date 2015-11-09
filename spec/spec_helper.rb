@@ -22,4 +22,8 @@ RSpec.configure do |config|
   config.expect_with :rspec do |expect_with|
     expect_with.syntax = :expect
   end
+
+  config.around(:each) do |example|
+    Timeout.timeout(5_000, &example)
+  end
 end
