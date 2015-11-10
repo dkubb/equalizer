@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class Equalizer < Module
+module Equalizer
   # Gem version
   VERSION = '0.0.11'.freeze
 end # class Equalizer
