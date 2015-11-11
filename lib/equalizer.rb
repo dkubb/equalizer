@@ -114,7 +114,7 @@ private
     #
     # @api public
     def ==(other)
-      other = coerce(other).first if respond_to?(:coerce, true)
+      other = Array(coerce(other)).first if respond_to?(:coerce, true)
       other.kind_of?(self.class) && cmp?(__method__, other)
     end
   end # module Methods
