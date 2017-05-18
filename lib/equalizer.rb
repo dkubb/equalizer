@@ -8,13 +8,15 @@ class Equalizer < Module
   # #hash, and #inspect
   #
   # @param [Array<Symbol>] keys
+  # @param define_inspect [Boolean] whether to override #inspect
   #
   # @return [undefined]
   #
   # @api private
-  def initialize(*keys)
+  def initialize(*keys, define_inspect: true)
     @keys = keys
-    define_methods
+    define_cmp_and_hash_methods
+    define_inspect_method if define_inspect
     freeze
   end
 
@@ -38,10 +40,9 @@ private
   # @return [undefined]
   #
   # @api private
-  def define_methods
+  def define_cmp_and_hash_methods
     define_cmp_method
     define_hash_method
-    define_inspect_method
   end
 
   # Define an #cmp? method based on the instance's values identified by #keys
