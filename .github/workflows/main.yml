@@ -24,8 +24,133 @@ jobs:
         key: bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-
-    - name: rake ci
+    - name: bundle install
       run: |
          bundle config path vendor/bundle
          bundle --jobs 4 --retry 3
-         bundle exec rake metrics:coverage metrics:yardstick:verify metrics:rubocop metrics:flog metrics:flay metrics:reek spec:integration
+  coverage:
+    needs: build
+    strategy:
+      matrix:
+        ruby: [ 2.2, 2.3, 2.4, 2.5, 2.6, head, jruby, rubinius ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-
+    - run: bundle exec rake metrics:coverage
+  yardstick:
+    needs: build
+    strategy:
+      matrix:
+        ruby: [ 2.2, 2.3, 2.4, 2.5, 2.6, head, jruby, rubinius ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-
+    - run: bundle exec rake metrics:yardstick:verify
+  rubocop:
+    needs: build
+    strategy:
+      matrix:
+        ruby: [ 2.2, 2.3, 2.4, 2.5, 2.6, head, jruby, rubinius ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-
+    - run: bundle exec rake metrics:rubocop
+  flog:
+    needs: build
+    strategy:
+      matrix:
+        ruby: [ 2.2, 2.3, 2.4, 2.5, 2.6, head, jruby, rubinius ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-
+    - run: bundle exec rake metrics:flog
+  flay:
+    needs: build
+    strategy:
+      matrix:
+        ruby: [ 2.2, 2.3, 2.4, 2.5, 2.6, head, jruby, rubinius ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-
+    - run: bundle exec rake metrics:flay
+  reek:
+    needs: build
+    strategy:
+      matrix:
+        ruby: [ 2.2, 2.3, 2.4, 2.5, 2.6, head, jruby, rubinius ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-
+    - run: bundle exec rake metrics:reek
+  integration:
+    needs: build
+    strategy:
+      matrix:
+        ruby: [ 2.2, 2.3, 2.4, 2.5, 2.6, head, jruby, rubinius ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-
+    - run: bundle exec rake spec:integration
