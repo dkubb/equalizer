@@ -11,7 +11,7 @@ jobs:
     name: Ruby ${{ matrix.ruby }}
     strategy:
       matrix:
-        ruby: [ 2.2, head, jruby, rubinius ]
+        ruby: [ 2.2, 2.3, 2.4, 2.5, 2.6, head, jruby, rubinius ]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
