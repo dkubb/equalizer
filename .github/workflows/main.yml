@@ -28,4 +28,4 @@ jobs:
       run: |
          bundle config path vendor/bundle
          bundle --jobs 4 --retry 3
-         bundle exec rake ci
+         bundle exec rake metrics:coverage metrics:yardstick:verify metrics:rubocop metrics:flog metrics:flay metrics:reek spec:integration
