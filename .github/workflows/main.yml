@@ -24,10 +24,8 @@ jobs:
         key: bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           bundle-use-ruby-${{ matrix.os }}-${{ matrix.ruby }}-
-    - name: bundle install
+    - name: rake ci
       run: |
          bundle config path vendor/bundle
          bundle --jobs 4 --retry 3
-         echo $?
-    - name: rake ci
-      run: bundle exec rake ci
+         bundle exec rake ci
