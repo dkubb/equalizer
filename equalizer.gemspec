@@ -19,5 +19,5 @@ Gem::Specification.new do |gem|
 
   gem.required_ruby_version = '>= 2.1.0'
 
-  gem.add_development_dependency('bundler', '~> 1.3', '>= 1.3.5')
+  gem.add_development_dependency('bundler', '>= 1.3.5')
 end
