@@ -80,4 +80,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 Copyright
 ---------
 
-Copyright &copy; 2009-2013 Dan Kubb. See LICENSE for details.
+Copyright &copy; 2009-2024 Dan Kubb. See LICENSE for details.
