@@ -15,6 +15,4 @@ Gem::Specification.new do |gem|
   gem.extra_rdoc_files = %w[LICENSE README.md CONTRIBUTING.md]
 
   gem.required_ruby_version = '>= 3.1'
-
-  gem.add_development_dependency('bundler', '~> 2.3')
 end
