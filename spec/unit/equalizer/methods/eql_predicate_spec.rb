@@ -27,7 +27,7 @@ describe Equalizer::Methods, '#eql?' do
     it { is_expected.to be(true) }
 
     it 'is symmetric' do
-      is_expected.to eql(other.eql?(object))
+      expect(subject).to eql(other.eql?(object))
     end
   end
 
@@ -37,7 +37,7 @@ describe Equalizer::Methods, '#eql?' do
     it { is_expected.to be(true) }
 
     it 'is symmetric' do
-      is_expected.to eql(other.eql?(object))
+      expect(subject).to eql(other.eql?(object))
     end
   end
 
@@ -47,7 +47,7 @@ describe Equalizer::Methods, '#eql?' do
     it { is_expected.to be(false) }
 
     it 'is symmetric' do
-      is_expected.to eql(other.eql?(object))
+      expect(subject).to eql(other.eql?(object))
     end
   end
 
@@ -57,7 +57,7 @@ describe Equalizer::Methods, '#eql?' do
     it { is_expected.to be(false) }
 
     it 'is symmetric' do
-      is_expected.to eql(other.eql?(object))
+      expect(subject).to eql(other.eql?(object))
     end
   end
 end
