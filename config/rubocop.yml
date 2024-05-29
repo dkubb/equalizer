@@ -1,3 +1,19 @@
+inherit_from: ../.rubocop.yml
+
+AllCops:
+  TargetRubyVersion: 2.5.0
+
+Metrics/BlockLength:
+  Exclude:
+  # Ignore RSpec DSL
+    - spec/**/*
+  # Ignore gemspec DSL
+    - '*.gemspec'
+
+Naming/FileName:
+  Exclude:
+    - Rakefile
+
 # Avoid parameter lists longer than five parameters.
 ParameterLists:
   Max: 3
@@ -85,16 +101,12 @@ PercentLiteralDelimiters:
     '%W': '[]'
     '%x': ()
 
-# Use %i[...] for arrays of symbols
-SymbolArray:
-  Enabled: true
-
 # Align if/else blocks with the variable assignment
 EndAlignment:
-  AlignWith: variable
+  EnforcedStyleAlignWith: variable
 
 # Do not always align parameters when it is easier to read
-AlignParameters:
+Layout/ParameterAlignment:
   Exclude:
     - spec/**/*_spec.rb
 
@@ -103,13 +115,37 @@ ClassCheck:
   EnforcedStyle: kind_of?
 
 # Do not prefer double quotes to be used when %q or %Q is more appropriate
-UnneededPercentQ:
+Style/RedundantPercentQ:
   Enabled: false
 
 # Allow a maximum ABC score
 Metrics/AbcSize:
-  Max: 8.6
+  Max: 20.1
 
 # Do not prefer lambda.call(...) over lambda.(...)
 LambdaCall:
   Enabled: false
+
+# Allow additional spaces
+ExtraSpacing:
+  Enabled: false
+
+# All objects can still be mutated if their eigenclass is patched
+RedundantFreeze:
+  Enabled: false
+
+# Prefer using `fail` when raising and `raise` when reraising
+SignalException:
+  EnforcedStyle: semantic
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/CommentedKeyword:
+  Enabled: false
+
+Style/MixinGrouping:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
