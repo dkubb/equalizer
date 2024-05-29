@@ -113,7 +113,7 @@ class Equalizer < Module
     # @api public
     def ==(other)
       other = coerce(other).first if respond_to?(:coerce, true)
-      other.kind_of?(self.class) && cmp?(__method__, other)
+      other.is_a?(self.class) && cmp?(__method__, other)
     end
   end # module Methods
 end # class Equalizer

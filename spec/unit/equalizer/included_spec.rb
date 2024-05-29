@@ -34,7 +34,7 @@ describe Equalizer, '#included' do
         # Otherwise, other module includes (which get triggered internally
         # in RSpec when `change` is used for the first time, since it uses
         # autoloading for its matchers) will wrongly set this flag.
-        included = true if kind_of?(Equalizer)
+        included = true if is_a?(Equalizer)
       end
     end
 
