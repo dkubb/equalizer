@@ -4,14 +4,10 @@ equalizer
 Module to define equality, equivalence and inspection methods
 
 [![Gem Version](http://img.shields.io/gem/v/equalizer.svg)][gem]
-[![Build Status](http://img.shields.io/travis/dkubb/equalizer.svg)][travis]
-[![Dependency Status](http://img.shields.io/gemnasium/dkubb/equalizer.svg)][gemnasium]
-[![Code Climate](http://img.shields.io/codeclimate/github/dkubb/equalizer.svg)][codeclimate]
+[![Build Status](https://github.com/dkubb/equalizer/actions/workflows/test.yml/badge.svg)][tests]
 
 [gem]: https://rubygems.org/gems/equalizer
-[travis]: https://travis-ci.org/dkubb/equalizer
-[gemnasium]: https://gemnasium.com/dkubb/equalizer
-[codeclimate]: https://codeclimate.com/github/dkubb/equalizer
+[tests]: https://github.com/dkubb/equalizer/actions/workflows/test.yml
 
 Examples
 --------
