@@ -115,5 +115,5 @@ class Equalizer < Module
       other = coerce(other).first if respond_to?(:coerce, true)
       other.is_a?(self.class) && cmp?(__method__, other)
     end
-  end # module Methods
-end # class Equalizer
+  end
+end
