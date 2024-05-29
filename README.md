@@ -73,7 +73,7 @@ Credits
 * Dan Kubb ([dkubb](https://github.com/dkubb))
 * Piotr Solnica ([solnic](https://github.com/solnic))
 * Markus Schirp ([mbj](https://github.com/mbj))
-* Erik Michaels-Ober ([sferik](https://github.com/sferik))
+* Erik Berlin ([sferik](https://github.com/sferik))
 
 Contributing
 -------------
