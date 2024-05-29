@@ -16,7 +16,7 @@ class Equalizer < Module
     freeze
   end
 
-private
+  private
 
   # Hook called when module is included
   #
