@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 # Define equality, equivalence and inspection methods
 class Equalizer < Module
   # Initialize an Equalizer with the given keys
