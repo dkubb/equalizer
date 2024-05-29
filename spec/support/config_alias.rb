@@ -1,3 +1,3 @@
 require 'rbconfig'
 
-::Config = RbConfig unless defined?(::Config)
+Config = RbConfig unless defined?(Config)

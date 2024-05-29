@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Equalizer, '.new' do
   let(:object) { described_class }
   let(:name)   { 'User'          }
-  let(:klass)  { ::Class.new     }
+  let(:klass)  { Class.new       }
 
   context 'with no keys' do
     subject { object.new }
@@ -79,7 +79,7 @@ describe Equalizer, '.new' do
     let(:instance)   { klass.new(firstname, lastname) }
 
     let(:klass) do
-      ::Class.new do
+      Class.new do
         attr_reader :firstname, :lastname
         private :firstname, :lastname
 
