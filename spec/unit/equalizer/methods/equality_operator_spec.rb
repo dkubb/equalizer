@@ -50,7 +50,7 @@ describe Equalizer::Methods, '#==' do
     it 'is not symmetric' do
       # the subclass instance should maintain substitutability with the object
       # (in the LSP sense) the reverse is not true.
-      expect(subject).to_not eql(other == object)
+      expect(subject).not_to eql(other == object)
     end
   end
 
@@ -60,7 +60,7 @@ describe Equalizer::Methods, '#==' do
     it { is_expected.to be(false) }
 
     it 'is not symmetric' do
-      expect(subject).to_not eql(other == object)
+      expect(subject).not_to eql(other == object)
     end
   end
 
@@ -90,7 +90,7 @@ describe Equalizer::Methods, '#==' do
     it { is_expected.to be(true) }
 
     it 'is not symmetric' do
-      expect(subject).to_not eql(other == object)
+      expect(subject).not_to eql(other == object)
     end
   end
 
