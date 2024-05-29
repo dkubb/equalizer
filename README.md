@@ -4,10 +4,10 @@ equalizer
 Module to define equality, equivalence and inspection methods
 
 [![Gem Version](http://img.shields.io/gem/v/equalizer.svg)][gem]
-[![Build Status](https://github.com/dkubb/equalizer/actions/workflows/test.yml/badge.svg)][tests]
+[![Build Status](https://github.com/dkubb/equalizer/actions/workflows/specs.yml/badge.svg)][specs]
 
 [gem]: https://rubygems.org/gems/equalizer
-[tests]: https://github.com/dkubb/equalizer/actions/workflows/test.yml
+[specs]: https://github.com/dkubb/equalizer/actions/workflows/specs.yml
 
 Examples
 --------
