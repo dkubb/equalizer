@@ -1,6 +1,6 @@
-require 'spec_helper'
+require "spec_helper"
 
-describe Equalizer::Methods, '#eql?' do
+describe Equalizer::Methods, "#eql?" do
   subject { object.eql?(other) }
 
   let(:object) { described_class.new(true) }
@@ -21,42 +21,42 @@ describe Equalizer::Methods, '#eql?' do
     end
   end
 
-  context 'with the same object' do
+  context "with the same object" do
     let(:other) { object }
 
     it { is_expected.to be(true) }
 
-    it 'is symmetric' do
+    it "is symmetric" do
       expect(subject).to eql(other.eql?(object))
     end
   end
 
-  context 'with an equivalent object' do
+  context "with an equivalent object" do
     let(:other) { object.dup }
 
     it { is_expected.to be(true) }
 
-    it 'is symmetric' do
+    it "is symmetric" do
       expect(subject).to eql(other.eql?(object))
     end
   end
 
-  context 'with an equivalent object of a subclass' do
+  context "with an equivalent object of a subclass" do
     let(:other) { Class.new(described_class).new(true) }
 
     it { is_expected.to be(false) }
 
-    it 'is symmetric' do
+    it "is symmetric" do
       expect(subject).to eql(other.eql?(object))
     end
   end
 
-  context 'with a different object' do
+  context "with a different object" do
     let(:other) { described_class.new(false) }
 
     it { is_expected.to be(false) }
 
-    it 'is symmetric' do
+    it "is symmetric" do
       expect(subject).to eql(other.eql?(object))
     end
   end

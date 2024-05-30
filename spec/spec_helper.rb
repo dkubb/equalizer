@@ -1,18 +1,18 @@
-if ENV['COVERAGE'] == 'true'
-  require 'simplecov'
+if ENV["COVERAGE"] == "true"
+  require "simplecov"
 
   SimpleCov.start do
-    command_name 'spec:unit'
+    command_name "spec:unit"
 
-    add_filter 'config'
-    add_filter 'spec'
-    add_filter 'vendor'
+    add_filter "config"
+    add_filter "spec"
+    add_filter "vendor"
 
     minimum_coverage 100
   end
 end
 
-require 'equalizer'
+require "equalizer"
 
 RSpec.configure do |config|
   config.raise_errors_for_deprecations!

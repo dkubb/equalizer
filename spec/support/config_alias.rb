@@ -1,3 +1,3 @@
-require 'rbconfig'
+require "rbconfig"
 
 Config = RbConfig unless defined?(Config)

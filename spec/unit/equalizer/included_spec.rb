@@ -1,6 +1,6 @@
-require 'spec_helper'
+require "spec_helper"
 
-describe Equalizer, '#included' do
+describe Equalizer, "#included" do
   subject { descendant.instance_exec(object) { |mod| include mod } }
 
   let(:object)     { described_class.new        }
@@ -22,7 +22,7 @@ describe Equalizer, '#included' do
     end
   end
 
-  it 'delegates to the superclass #included method' do
+  it "delegates to the superclass #included method" do
     # This is the most succinct approach I could think of to test whether the
     # superclass#included method is called. All of the built-in rspec helpers
     # did not seem to work for this.
@@ -41,7 +41,7 @@ describe Equalizer, '#included' do
     expect { subject }.to change { included }.from(false).to(true)
   end
 
-  it 'includes methods into the descendant' do
+  it "includes methods into the descendant" do
     subject
     expect(descendant.included_modules).to include(described_class::Methods)
   end

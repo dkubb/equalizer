@@ -1,6 +1,6 @@
-require 'spec_helper'
+require "spec_helper"
 
-describe Equalizer::Methods, '#==' do
+describe Equalizer::Methods, "#==" do
   subject { object == other }
 
   let(:object)          { described_class.new(true) }
@@ -22,59 +22,59 @@ describe Equalizer::Methods, '#==' do
     end
   end
 
-  context 'with the same object' do
+  context "with the same object" do
     let(:other) { object }
 
     it { is_expected.to be(true) }
 
-    it 'is symmetric' do
+    it "is symmetric" do
       expect(subject).to eql(other == object)
     end
   end
 
-  context 'with an equivalent object' do
+  context "with an equivalent object" do
     let(:other) { object.dup }
 
     it { is_expected.to be(true) }
 
-    it 'is symmetric' do
+    it "is symmetric" do
       expect(subject).to eql(other == object)
     end
   end
 
-  context 'with a subclass instance having equivalent obervable state' do
+  context "with a subclass instance having equivalent obervable state" do
     let(:other) { Class.new(described_class).new(true) }
 
     it { is_expected.to be(true) }
 
-    it 'is not symmetric' do
+    it "is not symmetric" do
       # the subclass instance should maintain substitutability with the object
       # (in the LSP sense) the reverse is not true.
       expect(subject).not_to eql(other == object)
     end
   end
 
-  context 'with a superclass instance having equivalent observable state' do
+  context "with a superclass instance having equivalent observable state" do
     let(:other) { super_class.new(true) }
 
     it { is_expected.to be(false) }
 
-    it 'is not symmetric' do
+    it "is not symmetric" do
       expect(subject).not_to eql(other == object)
     end
   end
 
-  context 'with an object of another class' do
+  context "with an object of another class" do
     let(:other) { Class.new.new }
 
     it { is_expected.to be(false) }
 
-    it 'is symmetric' do
+    it "is symmetric" do
       expect(subject).to eql(other == object)
     end
   end
 
-  context 'with an equivalent object after coercion' do
+  context "with an equivalent object after coercion" do
     let(:other) { Object.new }
 
     before do
@@ -89,12 +89,12 @@ describe Equalizer::Methods, '#==' do
 
     it { is_expected.to be(true) }
 
-    it 'is not symmetric' do
+    it "is not symmetric" do
       expect(subject).not_to eql(other == object)
     end
   end
 
-  context 'with a different object after coercion' do
+  context "with a different object after coercion" do
     let(:other) { nil }
 
     before do
@@ -109,17 +109,17 @@ describe Equalizer::Methods, '#==' do
 
     it { is_expected.to be(false) }
 
-    it 'is symmetric' do
+    it "is symmetric" do
       expect(subject).to eql(other == object)
     end
   end
 
-  context 'with a different object' do
+  context "with a different object" do
     let(:other) { described_class.new(false) }
 
     it { is_expected.to be(false) }
 
-    it 'is symmetric' do
+    it "is symmetric" do
       expect(subject).to eql(other == object)
     end
   end
