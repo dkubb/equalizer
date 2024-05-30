@@ -1,0 +1,17 @@
+---
+coverage_criteria:
+  process_abort: true
+fail_fast: true
+includes:
+- lib
+integration:
+  name: rspec
+matcher:
+  subjects:
+  - Equalizer*
+mutation:
+  operators: full
+  timeout: 10.0
+requires:
+- equalizer
+usage: opensource

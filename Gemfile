@@ -3,6 +3,8 @@ source "https://rubygems.org"
 gem "rake", ">= 12.3.3"
 
 group :test do
+  gem "mutant", ">= 0.12"
+  gem "mutant-rspec"
   gem "rspec"
   gem "simplecov", require: false, platforms: :ruby
   gem "simplecov-cobertura", require: false, platforms: :ruby
