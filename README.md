@@ -5,9 +5,15 @@ Module to define equality, equivalence and inspection methods
 
 [![Gem Version](http://img.shields.io/gem/v/equalizer.svg)][gem]
 [![Build Status](https://github.com/dkubb/equalizer/actions/workflows/specs.yml/badge.svg)][specs]
+[![Mutant](https://github.com/dkubb/equalizer/actions/workflows/mutant.yml/badge.svg)][mutant]
+[![Standard](https://github.com/dkubb/equalizer/actions/workflows/standard.yml/badge.svg)][standard]
+[![Yardstick](https://github.com/dkubb/equalizer/actions/workflows/yardstick.yml/badge.svg)][yardstick]
 
 [gem]: https://rubygems.org/gems/equalizer
 [specs]: https://github.com/dkubb/equalizer/actions/workflows/specs.yml
+[mutant]: https://github.com/dkubb/equalizer/actions/workflows/mutant.yml
+[standard]: https://github.com/dkubb/equalizer/actions/workflows/standard.yml
+[yardstick]: https://github.com/dkubb/equalizer/actions/workflows/yardstick.yml
 
 Examples
 --------
@@ -43,7 +49,7 @@ point_a.equal?(point_c)      # => false
 Supported Ruby Versions
 -----------------------
 
-This library aims to support and is [tested against][travis] the following Ruby
+This library aims to support and is [tested against][specs] the following Ruby
 implementations:
 
 * Ruby 3.1
