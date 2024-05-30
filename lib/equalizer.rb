@@ -65,7 +65,7 @@ class Equalizer < Module
   def define_hash_method
     keys = @keys
     define_method(:hash) do
-      keys.map(&method(:send)).push(self.class).hash
+      keys.map(&public_method(:send)).push(self.class).hash
     end
   end
 
