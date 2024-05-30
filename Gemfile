@@ -18,9 +18,8 @@ group :tools do
 end
 
 group :docs do
-  gem "redcarpet"
   gem "yard"
-  gem "yard-junk"
+  gem "yardstick"
 end
 
 gemspec

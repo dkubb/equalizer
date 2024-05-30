@@ -6,10 +6,9 @@ require "rubocop/rake_task"
 RSpec::Core::RakeTask.new(:spec)
 RuboCop::RakeTask.new
 
-begin
-  require "yard-junk/rake"
-  YardJunk::Rake.define_task(:text)
-rescue LoadError
+require "yardstick/rake/verify"
+Yardstick::Rake::Verify.new do |verify|
+  verify.threshold = 100
 end
 
 task default: [:spec]
