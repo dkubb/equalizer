@@ -14,6 +14,7 @@ group :tools do
   gem 'rubocop-performance'
   gem 'rubocop-rake'
   gem 'rubocop-rspec'
+  gem 'standard', '>= 1.35.1'
 end
 
 group :docs do
