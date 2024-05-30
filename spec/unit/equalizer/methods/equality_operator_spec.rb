@@ -3,8 +3,8 @@ require "spec_helper"
 describe Equalizer::Methods, "#==" do
   subject { object == other }
 
-  let(:object)          { described_class.new(true) }
-  let(:described_class) { Class.new(super_class)    }
+  let(:object) { described_class.new(true) }
+  let(:described_class) { Class.new(super_class) }
 
   let(:super_class) do
     Class.new do

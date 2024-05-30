@@ -78,7 +78,7 @@ class Equalizer < Module
     keys = @keys
     define_method(:inspect) do
       klass = self.class
-      name  = klass.name || klass.inspect
+      name = klass.name || klass.inspect
       "#<#{name}#{keys.map { |key| " #{key}=#{__send__(key).inspect}" }.join}>"
     end
   end

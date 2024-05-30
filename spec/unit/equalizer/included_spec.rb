@@ -3,8 +3,8 @@ require "spec_helper"
 describe Equalizer, "#included" do
   subject { descendant.instance_exec(object) { |mod| include mod } }
 
-  let(:object)     { described_class.new        }
-  let(:descendant) { Class.new                  }
+  let(:object) { described_class.new }
+  let(:descendant) { Class.new }
   let(:superclass) { described_class.superclass }
 
   before do
