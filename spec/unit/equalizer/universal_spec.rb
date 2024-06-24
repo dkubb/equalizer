@@ -153,4 +153,36 @@ describe Equalizer, ".new" do
       end
     end
   end
+
+  context 'when define_inspect: false is specified' do
+    subject { object.new(*keys, define_inspect: false) }
+
+    let(:keys)       { %i[firstname lastname].freeze  }
+    let(:firstname)  { 'John'                         }
+    let(:lastname)   { 'Doe'                          }
+    let(:instance)   { klass.new(firstname, lastname) }
+
+    let(:klass) do
+      ::Class.new do
+        attr_reader :firstname, :lastname
+        private :firstname, :lastname
+
+        def initialize(firstname, lastname)
+          @firstname = firstname
+          @lastname = lastname
+        end
+      end
+    end
+
+    before do
+      # specify the class #inspect method
+      allow(klass).to receive_messages(name: nil, inspect: name)
+      klass.send(:include, subject)
+    end
+
+    it 'does not define a new #inspect method synamically' do
+      expect(subject.public_instance_methods(false).map(&:to_s))
+        .not_to include('inspect')
+    end
+  end
 end

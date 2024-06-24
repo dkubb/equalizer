@@ -44,6 +44,14 @@ point_a == point_c           # => false
 point_a.hash == point_c.hash # => false
 point_a.eql?(point_c)        # => false
 point_a.equal?(point_c)      # => false
+
+class Person < Struct.new(:id, :name)
+  include Equalizer.new(:id, define_inspect: false)
+end
+
+amy = Person.new(1, "Amy")
+
+amy.inspect   # => '#<struct Person id=1, name="Amy">'
 ```
 
 Supported Ruby Versions
