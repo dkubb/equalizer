@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.licenses = "MIT"
 
   gem.require_paths = %w[lib]
-  gem.files = `git ls-files`.split("\n")
+  gem.files = `git ls-files`.split("\n").grep_v(%r{^spec/})
   gem.extra_rdoc_files = %w[LICENSE README.md CONTRIBUTING.md]
 
   gem.required_ruby_version = ">= 3.1"
