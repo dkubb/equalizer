@@ -100,4 +100,42 @@ class InspectTest < EqualizerTestCase
 
     assert_match(/\A#<Point:/, result)
   end
+
+  def test_inspect_false_does_not_override_inspect
+    klass = Class.new do
+      include Equalizer.new(:id, inspect: false)
+
+      attr_reader :id, :name
+      def initialize(id, name) = (@id, @name = id, name)
+    end
+
+    result = klass.new(1, "Amy").inspect
+
+    refute_match(/\A#<.*@id=1>\z/, result)
+  end
+
+  def test_inspect_false_preserves_struct_inspect
+    klass = Class.new(Struct.new(:id, :name)) do
+      include Equalizer.new(:id, inspect: false)
+    end
+
+    result = klass.new(1, "Amy").inspect
+
+    assert_match(/id=1/, result)
+    assert_match(/name="Amy"/, result)
+  end
+
+  def test_inspect_true_overrides_inspect
+    klass = Class.new do
+      include Equalizer.new(:id, inspect: true)
+
+      attr_reader :id, :name
+      def initialize(id, name) = (@id, @name = id, name)
+    end
+
+    result = klass.new(1, "Amy").inspect
+
+    assert_match(/@id=1/, result)
+    refute_match(/@name/, result)
+  end
 end

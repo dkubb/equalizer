@@ -85,4 +85,30 @@ class PrettyPrintTest < EqualizerTestCase
       "pretty_print should use pp_object " \
       "which calls pretty_print_instance_variables"
   end
+
+  def test_inspect_false_does_not_override_pretty_print
+    require "pp"
+    klass = Class.new do
+      include Equalizer.new(:id, inspect: false)
+
+      attr_reader :id, :name
+      def initialize(id, name) = (@id, @name = id, name)
+    end
+
+    obj = klass.new(1, "Amy")
+
+    refute_includes obj.class.ancestors, Equalizer::InspectMethods
+  end
+
+  def test_inspect_false_preserves_struct_pretty_print
+    require "pp"
+    klass = Class.new(Struct.new(:id, :name)) do
+      include Equalizer.new(:id, inspect: false)
+    end
+
+    result = PP.pp(klass.new(1, "Amy"), +"")
+
+    assert_match(/id=1/, result)
+    assert_match(/name="Amy"/, result)
+  end
 end

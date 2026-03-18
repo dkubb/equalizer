@@ -40,13 +40,14 @@ module Equalizer
   #   end
   #
   # @param keys [Array<Symbol>] attribute names to use for equality
+  # @param inspect [Boolean] whether to override #inspect and #pretty_print
   # @return [Module] a module to include in your class
   # @raise [ArgumentError] if keys is empty or contains non-Symbols
   #
   # @api public
-  def self.new(*keys)
+  def self.new(*keys, inspect: true)
     validate_keys!(keys)
-    build_module(keys.freeze)
+    build_module(keys.freeze, inspect:)
   end
 
   # Validates that keys are non-empty and all Symbols
@@ -112,6 +113,27 @@ module Equalizer
       subset.to_h { |key| [key, public_send(key)] }
     end
 
+    private
+
+    # Compare all attributes using the given comparator
+    #
+    # @param comparator [Symbol] method to use for comparison
+    # @param other [Object] object to compare against
+    # @return [Boolean] true if all attributes match
+    #
+    # @api private
+    def cmp?(comparator, other)
+      equalizer_keys.all? do |key|
+        public_send(key)
+          .public_send(comparator, other.public_send(key))
+      end
+    end
+  end
+
+  # Instance methods for inspect and pretty print output
+  #
+  # @api private
+  module InspectMethods
     # String representation showing only equalizer attributes
     #
     # @return [String] inspect output
@@ -136,33 +158,19 @@ module Equalizer
     def pretty_print_instance_variables
       equalizer_keys.map { |key| :"@#{key}" }
     end
-
-    private
-
-    # Compare all attributes using the given comparator
-    #
-    # @param comparator [Symbol] method to use for comparison
-    # @param other [Object] object to compare against
-    # @return [Boolean] true if all attributes match
-    #
-    # @api private
-    def cmp?(comparator, other)
-      equalizer_keys.all? do |key|
-        public_send(key)
-          .public_send(comparator, other.public_send(key))
-      end
-    end
   end
 
   # Builds the module with equality methods for the given keys
   #
   # @param keys [Array<Symbol>] attribute names (frozen)
+  # @param inspect [Boolean] whether to include inspect methods
   # @return [Module] the configured module
   #
   # @api private
-  def self.build_module(keys)
+  def self.build_module(keys, inspect:)
     Module.new do
       include InstanceMethods
+      include InspectMethods if inspect
 
       set_temporary_name("Equalizer(#{keys.join(", ")})")
 

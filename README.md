@@ -242,6 +242,18 @@ user.inspect
 > When debugging, remember that `inspect` only shows equality attributes. Use
 > `instance_variables` to see all instance variables if needed.
 
+To keep the original `inspect` and `pretty_print` methods, pass `inspect: false`:
+
+```ruby
+class Person < Struct.new(:id, :name)
+  include Equalizer.new(:id, inspect: false)
+end
+
+amy = Person.new(1, "Amy")
+amy.inspect
+# => "#<struct Person id=1, name=\"Amy\">"
+```
+
 ### Clean Ancestor Chain
 
 The included module has a descriptive name in the ancestor chain:
