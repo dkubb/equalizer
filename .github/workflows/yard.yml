@@ -1,4 +1,4 @@
-name: Mutation Testing
+name: Documentation
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 jobs:
-  mutant:
+  yard:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,5 +16,11 @@ jobs:
         with:
           ruby-version: ruby
           bundler-cache: true
-      - name: Run mutation testing
-        run: bundle exec rake mutant
+      - name: Generate YARD documentation
+        run: bundle exec rake yard
+      - name: Upload documentation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: yard-docs
+          path: doc/
+          retention-days: 7

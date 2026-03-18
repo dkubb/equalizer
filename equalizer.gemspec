@@ -1,20 +1,43 @@
-require File.expand_path("lib/equalizer/version", __dir__)
+# frozen_string_literal: true
 
-Gem::Specification.new do |gem|
-  gem.name = "equalizer"
-  gem.version = Equalizer::VERSION.dup
-  gem.authors = ["Dan Kubb", "Markus Schirp"]
-  gem.email = %w[dan.kubb@gmail.com mbj@schirp-dso.com]
-  gem.description = "Module to define equality, equivalence and inspection methods"
-  gem.summary = gem.description
-  gem.homepage = "https://github.com/dkubb/equalizer"
-  gem.licenses = "MIT"
+require_relative "lib/equalizer"
 
-  gem.require_paths = %w[lib]
-  gem.files = `git ls-files`.split("\n").grep_v(%r{^spec/})
-  gem.extra_rdoc_files = %w[LICENSE README.md CONTRIBUTING.md]
+Gem::Specification.new do |spec|
+  spec.name = "equalizer"
+  spec.version = Equalizer::VERSION
+  spec.authors = ["Dan Kubb", "Markus Schirp", "Piotr Solnica", "Erik Berlin"]
+  spec.email = ["dan.kubb@gmail.com", "mbj@schirp-dso.com", "piotr.solnica@gmail.com", "sferik@gmail.com"]
 
-  gem.required_ruby_version = ">= 3.1"
+  spec.summary = "Define equality, equivalence, and " \
+    "hashing methods for Ruby objects"
+  spec.description = <<~DESCRIPTION
+    Equalizer provides a simple way to define equality
+    (==), equivalence (eql?), and hashing (hash) methods
+    for Ruby objects based on specified attributes. Includes
+    pattern matching support and clean inspect output.
+  DESCRIPTION
+  spec.homepage = "https://github.com/dkubb/equalizer"
+  spec.license = "MIT"
+  spec.required_ruby_version = ">= 3.3"
 
-  gem.metadata["rubygems_mfa_required"] = "true"
+  spec.metadata = {
+    "allowed_push_host" => "https://rubygems.org",
+    "bug_tracker_uri" => "#{spec.homepage}/issues",
+    "changelog_uri" => "#{spec.homepage}/blob/master/CHANGELOG.md",
+    "documentation_uri" => "https://rubydoc.info/gems/equalizer/",
+    "homepage_uri" => spec.homepage,
+    "rubygems_mfa_required" => "true",
+    "source_code_uri" => spec.homepage
+  }
+
+  spec.files = Dir.chdir(__dir__) do
+    `git ls-files -z`.split("\x0").reject do |f|
+      (File.expand_path(f) == __FILE__) ||
+        f.start_with?(
+          "bin/", "test/", "spec/", "features/",
+          ".git", ".github", "Gemfile"
+        )
+    end
+  end
+  spec.require_paths = ["lib"]
 end

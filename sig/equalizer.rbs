@@ -1,0 +1,61 @@
+# Type signatures for the Equalizer gem
+#
+# Equalizer provides equality, equivalence, hashing, and inspection methods
+# for Ruby objects based on specified attributes.
+
+module Equalizer
+  # The current version of the Equalizer gem.
+  VERSION: String
+
+  # Define equality methods for the given attributes.
+  #
+  # Creates a module that, when included, adds equality methods
+  # based on the specified attributes.
+  def self.new: (*Symbol keys) -> Module
+
+  # Private method to validate keys
+  def self.validate_keys!: (Array[untyped] keys) -> void
+
+  # Private method to build the module
+  def self.build_module: (Array[Symbol] keys) -> Module
+
+  # Instance methods mixed into classes that include an Equalizer module.
+  # Assumes equalizer_keys is provided by the dynamic module.
+  module InstanceMethods : _Equalizer
+    private
+
+    # Compare all attributes using the given comparator.
+    def cmp?: (Symbol comparator, untyped other) -> bool
+  end
+end
+
+# Interface for classes that include an Equalizer module
+interface _Equalizer
+  # Returns the attribute keys used for equality comparison (private).
+  def equalizer_keys: () -> Array[Symbol]
+
+  # Equivalence check - allows subclass instances.
+  def ==: (untyped other) -> bool
+
+  # Strict equality check - requires exact same class.
+  def eql?: (untyped other) -> bool
+
+  # Generate a hash code based on class and attribute values.
+  def hash: () -> Integer
+
+  # Array deconstruction for pattern matching.
+  def deconstruct: () -> Array[untyped]
+
+  # Hash deconstruction for pattern matching.
+  def deconstruct_keys: (Array[Symbol]? requested) -> Hash[Symbol, untyped]
+
+  # Custom inspect output showing equalizer attributes.
+  def inspect: () -> String
+
+  # Pretty print output using PP's object formatting.
+  def pretty_print: (untyped q) -> void
+
+  # Returns instance variable names for PP (pretty print).
+  def pretty_print_instance_variables: () -> Array[Symbol]
+end
+

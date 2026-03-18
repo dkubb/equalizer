@@ -1,17 +1,24 @@
----
-coverage_criteria:
-  process_abort: true
-fail_fast: true
-includes:
-- lib
+usage: opensource
 integration:
-  name: rspec
+  name: minitest
+includes:
+  - lib
+  - test
+requires:
+  - equalizer
+  - test_helper
+  - equalizer_test
 matcher:
   subjects:
-  - Equalizer*
+    - "Equalizer*"
 mutation:
   operators: full
   timeout: 10.0
-requires:
-- equalizer
-usage: opensource
+  ignore_patterns:
+    # module_eval's __LINE__ + 1 argument only affects debugging metadata
+    - send{selector=module_eval}
+coverage_criteria:
+  test_result: true
+  process_abort: true
+environment_variables:
+  MUTANT: "true"

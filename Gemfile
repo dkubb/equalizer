@@ -1,27 +1,29 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
-gem "rake", ">= 12.3.3"
-
-group :test do
-  gem "mutant", ">= 0.12"
-  gem "mutant-rspec"
-  gem "rspec"
-  gem "simplecov", require: false, platforms: :ruby
-  gem "simplecov-cobertura", require: false, platforms: :ruby
-  gem "warning" if RUBY_VERSION >= "2.4.0"
-end
-
-group :tools do
-  gem "rubocop", ">= 1.26.1"
-  gem "rubocop-performance"
-  gem "rubocop-rake"
-  gem "rubocop-rspec"
-  gem "standard", ">= 1.35.1"
-end
-
-group :docs do
-  gem "yard"
-  gem "yardstick"
-end
-
 gemspec
+
+group :development, :test do
+  gem "minitest", ">= 6"
+  gem "rake", ">= 13.3"
+  gem "simplecov", ">= 0.22", require: false
+
+  # Linting
+  gem "rubocop", ">= 1.82"
+  gem "rubocop-minitest", ">= 0.38"
+  gem "rubocop-performance", ">= 1.26"
+  gem "rubocop-rake", ">= 0.7"
+  gem "standard", ">= 1.53"
+  gem "standard-performance", ">= 1.9"
+
+  # Type checking
+  gem "steep", ">= 1.10"
+
+  # Documentation
+  gem "yard", ">= 0.9"
+  gem "yardstick", ">= 0.9"
+
+  # Mutation testing
+  gem "mutant-minitest", ">= 0.14"
+end
