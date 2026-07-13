@@ -6,8 +6,8 @@ unless ENV["MUTANT"]
   SimpleCov.start do
     enable_coverage :branch
     minimum_coverage line: 100, branch: 100
-    add_filter %r{^/test/}
-    add_group "Lib", "lib"
+    skip %r{^/test/}
+    group "Lib", "lib"
   end
 end
 

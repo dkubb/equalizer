@@ -7,7 +7,7 @@ gemspec
 group :development, :test do
   gem "minitest", ">= 6"
   gem "rake", ">= 13.3"
-  gem "simplecov", ">= 0.22", require: false
+  gem "simplecov", ">= 1", require: false
 
   # Linting
   gem "rubocop", ">= 1.82"
