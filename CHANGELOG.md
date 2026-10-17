@@ -2,8 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/2.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
 
 ## [1.0.0] - 2026-03-20
 
@@ -21,19 +23,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Rewritten from a `Module` subclass to a plain `module` with `Equalizer.new`
   returning anonymous modules
-- Minimum Ruby version raised to 3.3
+- **Breaking:** Minimum Ruby version raised to 3.3
 - `hash` method now uses `[self.class, *deconstruct].hash` for improved clarity
 - `inspect` output format uses `Object#to_s` base with `@attr=value` pairs
 - Uses `public_send` instead of `__send__` for attribute access
 - Switched test framework from RSpec to Minitest
-- Replaced `Equalizer::Methods` module with `Equalizer::InstanceMethods`
+- **Breaking:** Replaced `Equalizer::Methods` module with
+  `Equalizer::InstanceMethods`
 - Inlined `VERSION` constant (removed separate `version.rb` file)
 
 ### Removed
 
-- `coerce` support in `==` method
+- **Breaking:** `coerce` support in `==` method
 - `cmp?` private method (replaced with direct attribute comparisons)
-- `Equalizer::Methods` module (replaced by `Equalizer::InstanceMethods`)
+- **Breaking:** `Equalizer::Methods` module (replaced by
+  `Equalizer::InstanceMethods`)
 - devtools dependency
 
 ## [0.0.11] - 2015-03-23
@@ -51,10 +55,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Support for Ruby 2.1 and 2.2
 
-### Fixed
-
-- Fixed use of coerce method
-
 ### Changed
 
 - Updated RSpec dependency to ~> 3.0
@@ -64,6 +64,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - Dropped support for Ruby 1.9.2
+
+### Fixed
+
+- Fixed use of coerce method
 
 ## [0.0.9] - 2013-12-23
 
@@ -76,16 +80,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.8] - 2013-12-02
 
-### Fixed
-
-- Fixed mutation in equality and equivalency methods
-- Fixed mutation in comparison method
-
 ### Changed
 
 - Refactored explicit method to be an included hook method
 - Added spec for `Equalizer#included`
 - Changed spec to verify private attributes can be compared
+
+### Fixed
+
+- Fixed mutation in equality and equivalency methods
+- Fixed mutation in comparison method
 
 ## [0.0.7] - 2013-08-22
 
@@ -135,14 +139,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Define equality (`==`), equivalence (`eql?`), hashing (`hash`), and
   inspection (`inspect`) methods based on specified attributes
 
+[Unreleased]: https://github.com/dkubb/equalizer/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/dkubb/equalizer/compare/v0.0.11...v1.0.0
 [0.0.11]: https://github.com/dkubb/equalizer/compare/v0.0.10...v0.0.11
 [0.0.10]: https://github.com/dkubb/equalizer/compare/v0.0.9...v0.0.10
 [0.0.9]: https://github.com/dkubb/equalizer/compare/v0.0.8...v0.0.9
 [0.0.8]: https://github.com/dkubb/equalizer/compare/v0.0.7...v0.0.8
 [0.0.7]: https://github.com/dkubb/equalizer/compare/v0.0.5...v0.0.7
-[0.0.5]: https://github.com/dkubb/equalizer/compare/v0.0.4...v0.0.5
-[0.0.4]: https://github.com/dkubb/equalizer/compare/v0.0.3...v0.0.4
-[0.0.3]: https://github.com/dkubb/equalizer/compare/v0.0.2...v0.0.3
-[0.0.2]: https://github.com/dkubb/equalizer/compare/v0.0.1...v0.0.2
+[0.0.5]: https://github.com/dkubb/equalizer/compare/35b48f2...v0.0.5
+[0.0.4]: https://github.com/dkubb/equalizer/compare/aa8c089...35b48f2
+[0.0.3]: https://github.com/dkubb/equalizer/compare/f76ea21...aa8c089
+[0.0.2]: https://github.com/dkubb/equalizer/compare/v0.0.1...f76ea21
 [0.0.1]: https://github.com/dkubb/equalizer/releases/tag/v0.0.1
