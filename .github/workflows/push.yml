@@ -26,7 +26,7 @@ jobs:
           # that protobug 0.1.0 passes to JSON.parse. Use 3.4 until it's fixed.
           ruby-version: '3.4'
           bundler-cache: true
-      - uses: rubygems/configure-rubygems-credentials@v1.0.0
+      - uses: rubygems/configure-rubygems-credentials@v2.1.0
       - name: Update RubyGems
         run: gem update --system
       - name: Build gem
