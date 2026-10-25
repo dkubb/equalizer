@@ -20,10 +20,15 @@ group :development, :test do
   # Type checking
   gem "steep", ">= 1.10"
 
+  # Performance regression guards
+  # Duel requires Ruby 3.4 or later
+  gem "duel" if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.4")
+
   # Documentation
   gem "yard", ">= 0.9"
   gem "yardstick", ">= 0.9"
 
   # Mutation testing
   gem "mutant-minitest", ">= 0.14"
+  gem "stackprof", platforms: :mri
 end

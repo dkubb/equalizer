@@ -52,3 +52,10 @@ task quality: %i[rubocop steep yardstick]
 
 desc "Run all checks (tests, quality, mutation)"
 task default: %i[test quality mutant]
+
+begin
+  require "duel/rake_task"
+  Duel::RakeTask.new
+rescue LoadError
+  # Duel requires Ruby 3.4 or later
+end
