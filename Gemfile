@@ -22,7 +22,7 @@ group :development, :test do
 
   # Performance regression guards
   # Duel requires Ruby 3.4 or later
-  gem "duel", ">= 0.1.2" if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.4")
+  gem "duel", ">= 0.1.3" if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.4")
 
   # Documentation
   gem "yard", ">= 0.9"
