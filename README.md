@@ -5,7 +5,7 @@
 [![Quality](https://github.com/dkubb/equalizer/actions/workflows/quality.yml/badge.svg)](https://github.com/dkubb/equalizer/actions/workflows/quality.yml)
 [![Documentation](https://github.com/dkubb/equalizer/actions/workflows/yard.yml/badge.svg)](https://github.com/dkubb/equalizer/actions/workflows/yard.yml)
 [![Mutation Testing](https://github.com/dkubb/equalizer/actions/workflows/mutant.yml/badge.svg)](https://github.com/dkubb/equalizer/actions/workflows/mutant.yml)
-[![Duel](https://raw.githubusercontent.com/dkubb/equalizer/duel/badge/badge.svg)](https://github.com/sferik/duel-ruby)
+[![Duel](https://raw.githubusercontent.com/dkubb/equalizer/duel/badge/badge.svg)](https://github.com/dkubb/equalizer/actions/workflows/perf.yml)
 
 Equalizer provides equality, equivalence, hashing, pattern matching, and
 inspection methods for Ruby objects based on explicitly specified attributes.
